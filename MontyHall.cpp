@@ -3,18 +3,20 @@
 #include <random>
 using namespace std;
 
+typedef enum Gate {
+    uninit,
+    mainprice,
+    looser
+}Gate_t; 
+
 /* Monty Hall simulation, with always picking the first gate, after which the moderator is forced to discard either gate 2 or 3 */
 int main()
 {
-    typedef enum Gate {
-        uninit,
-        mainprice,
-        looser
-    }Gate_t; 
+
 
     Gate* offeredGate_p = NULL;
-    int stays=0, changes=0;
-    float RNG = 0;
+    int stays=0, changes=0; /* Counters for staying with the choice or switching choice */
+    float RNG = 0; /* Generated random number between 0 and 1 */
     Gate_t GateOne=uninit, GateTwo=uninit, GateThree=uninit;
 
     for (int i=0; i<1000; i++)
